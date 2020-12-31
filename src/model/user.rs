@@ -137,6 +137,20 @@ impl CurrentUser {
             .unwrap_or_else(|| self.default_avatar_url())
     }
 
+    /// Retrieves the URL to the current user's static avatar, falling back
+    /// to the default avatar if needed. 
+    ///
+    /// This will call [`static_avatar_url`] first, and if that returns
+    /// `None`, it then falls back to [`default_avatar_url`].
+    ///
+    /// [`static_avatar_url`]: Self::static_avatar_url
+    /// [`default_avatar_url`]: Self::default_avatar_url
+    #[inline]
+    pub fn static_face(&self) -> String {
+        self.static_avatar_url()
+            .unwrap_or_else(|| self.default_avatar_url())
+    }
+
     /// Gets a list of guilds that the current user is in.
     ///
     /// # Examples
@@ -574,6 +588,20 @@ impl User {
     /// [`default_avatar_url`]: Self::default_avatar_url
     pub fn face(&self) -> String {
         self.avatar_url()
+            .unwrap_or_else(|| self.default_avatar_url())
+    }
+
+    /// Retrieves the URL to the current user's static avatar, falling back
+    /// to the default avatar if needed. 
+    ///
+    /// This will call [`static_avatar_url`] first, and if that returns
+    /// `None`, it then falls back to [`default_avatar_url`].
+    ///
+    /// [`static_avatar_url`]: Self::static_avatar_url
+    /// [`default_avatar_url`]: Self::default_avatar_url
+    #[inline]
+    pub fn static_face(&self) -> String {
+        self.static_avatar_url()
             .unwrap_or_else(|| self.default_avatar_url())
     }
 
